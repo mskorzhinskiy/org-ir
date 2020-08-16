@@ -1,0 +1,11 @@
+#+TITLE: Introspection reports for org-mode
+
+Personal set of ~org-mode~ functions for introspection reports generation. Call
+~org-ir-week~ and ~org-ir-month~ for report generation, report will be placed to
+the ~/inbox/<report name>.org.
+
+Package is unfinished and hopefully will be improved and updated in future.
+
+* Requirements
+
+- [[https://github.com/alphapapa/org-ql][org-ql]]
