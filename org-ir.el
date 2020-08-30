@@ -34,12 +34,6 @@
         :ignore-tags `(list "journal" "story"))
   "Format of weekly report to generate by `org-ir-week'.")
 
-;; TODO: Move it outside of the package
-(defun org-user/agenda-with-journal ()
-  (let ((agenda-files (org-agenda-files))
-        (journal-files (seq-filter 'file-regular-p (directory-files "~/org/journal" 'full-name))))
-    (append agenda-files journal-files)))
-
 ;; Functions
 
 (defun org-ir-insert-clocktable (arguments)
@@ -129,7 +123,7 @@
                (ct-block-format (format "%s :step %s" ct-format step)))
           (org-ir-insert-clocktable (concat ct-format " :maxlevel 2 :link t"))
           (org-ir-insert-query
-           (org-user/agenda-with-journal)
+           (org-agenda-files)
            `(and (clocked :from ,date-beg :to ,date-end) ,query)
            `(:make-ct t
              :remove-tags ,remove-tags
