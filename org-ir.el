@@ -34,6 +34,9 @@
         :ignore-tags `(list "journal" "story"))
   "Format of weekly report to generate by `org-ir-week'.")
 
+(defcustom org-ir-setup-file ""
+  "Line to the setupfile for the export engines.")
+
 ;; Functions
 
 (defun org-ir-insert-clocktable (arguments)
@@ -175,6 +178,8 @@
                     (ts-format "%Y Week %W" start)
                     (ts-format "%d.%m" start)
                     (ts-format "%d.%m" end)))
+    (insert (format "#+SETUPFILE: %s\n" org-ir-setup-file))
+    (insert (format "* Overview\n\n\n"))
     (org-ir-report-range
      `(:begin ,start-string
        :end   ,end-string
@@ -200,6 +205,8 @@
                     (ts-format "%Y %B" start)
                     (ts-format "%d.%m" start)
                     (ts-format "%d.%m" end)))
+    (insert (format "#+SETUPFILE: %s\n" org-ir-setup-file))
+    (insert (format "* Overview\n\n\n"))
     (org-ir-report-range
      `(:begin ,start-string
        :end   ,end-string
