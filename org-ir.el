@@ -121,7 +121,7 @@
       (save-excursion
         (let* ((ct-format (format ":tstart \"%s\" :tend \"%s\"" date-beg date-end))
                (ct-block-format (format "%s :step %s" ct-format step)))
-          (org-ir-insert-clocktable (concat ct-format " :maxlevel 2 :link t"))
+          (org-ir-insert-clocktable (concat ct-format " :maxlevel 2"))
           (org-ir-insert-query
            (org-agenda-files)
            `(and (clocked :from ,date-beg :to ,date-end) ,query)
